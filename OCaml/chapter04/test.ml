@@ -21,15 +21,15 @@ let test ?(text_if_ok="Ok") ?(text_if_error="Error") name term evaluated_term =
   else print_endline @@ "\t" ^ text_if_error
 
 let () =
-  test "Single Step - Simple if with true"
-    (single_step_evaluation (TermIf("", TermTrue(""), TermZero(""), TermTrue(""))))
+  test "Small Step - Simple if with true"
+    (small_step_evaluation (TermIf("", TermTrue(""), TermZero(""), TermTrue(""))))
     (TermZero(""));
-  test "Single Step - Simple if with false"
-    (single_step_evaluation (TermIf("", TermFalse(""), TermZero(""), TermTrue(""))))
+  test "Small Step - Simple if with false"
+    (small_step_evaluation (TermIf("", TermFalse(""), TermZero(""), TermTrue(""))))
     (TermTrue(""));
   test
-    "Single Step - If where condition evaluation is needed"
-    (single_step_evaluation (TermIf("", TermIsZero("", TermZero("")), TermZero(""), TermTrue(""))))
+    "Small Step - If where condition evaluation is needed"
+    (small_step_evaluation (TermIf("", TermIsZero("", TermZero("")), TermZero(""), TermTrue(""))))
     (TermIf("", TermTrue(""), TermZero(""), TermTrue("")))
 
 
